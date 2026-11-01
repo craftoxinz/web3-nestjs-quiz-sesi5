@@ -13,21 +13,21 @@ export class CustomersService {
   private readonly customers: Customer[] = [
     {
       id: '8b737a45-9b0b-485d-9189-e54f4547b138',
-      name: 'John Doe',
-      phoneNumber: '+1 123-456-7890',
-      address: '123 Main St, Anytown, USA',
+      name: 'Andi Pratama',
+      phoneNumber: '+62 812-1111-2201',
+      address: 'Jl. Merdeka No. 10, Bandung, Jawa Barat, Indonesia',
     },
     {
-      id: 'b95acdd5-6897-4253-9bff-9e1bc34ced6a',
-      name: 'Budi Santoso',
-      phoneNumber: '+62 812-3456-7890',
-      address: 'Jl. Asia Afrika No. 12, Bandung, Jawa Barat, Indonesia',
+      id: 'd0e49e0a-9d51-4f2f-89cd-ecec1b7e07f6',
+      name: 'Siti Nurhaliza',
+      phoneNumber: '+62 813-2222-3302',
+      address: 'Jl. Pemuda No. 25, Semarang, Jawa Tengah, Indonesia',
     },
     {
-      id: '5a58df14-e2da-4f08-9b82-f723f02b5edc',
-      name: 'Ahmad Fauzi',
-      phoneNumber: '+62 811-2345-6789',
-      address: 'Jl. Diponegoro No. 56, Surabaya, Indonesia',
+      id: 'd4b0fa49-f698-4bdd-b471-901af11a0716',
+      name: 'Agus Wijaya',
+      phoneNumber: '+62 857-3333-4403',
+      address: 'Jl. Raya Kuta No. 8, Badung, Bali, Indonesia',
     },
   ];
 

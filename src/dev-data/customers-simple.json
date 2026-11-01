@@ -1,21 +1,21 @@
 [
   {
     "id": "8b737a45-9b0b-485d-9189-e54f4547b138",
-    "name": "John Doe",
-    "phoneNumber": "+1 123-456-7890",
-    "address": "123 Main St, Anytown, USA"
+    "name": "Andi Pratama",
+    "phoneNumber": "+62 812-1111-2201",
+    "address": "Jl. Merdeka No. 10, Bandung, Jawa Barat, Indonesia"
   },
   {
     "id": "d0e49e0a-9d51-4f2f-89cd-ecec1b7e07f6",
-    "name": "Jane Smith",
-    "phoneNumber": "+1 987-654-3210",
-    "address": "456 Elm St, Othertown, USA"
+    "name": "Siti Nurhaliza",
+    "phoneNumber": "+62 813-2222-3302",
+    "address": "Jl. Pemuda No. 25, Semarang, Jawa Tengah, Indonesia"
   },
   {
     "id": "d4b0fa49-f698-4bdd-b471-901af11a0716",
-    "name": "Alice Johnson",
-    "phoneNumber": "+1 555-123-4567",
-    "address": "789 Oak St, Sometown, USA"
+    "name": "Agus Wijaya",
+    "phoneNumber": "+62 857-3333-4403",
+    "address": "Jl. Raya Kuta No. 8, Badung, Bali, Indonesia"
   },
   {
     "id": "b95acdd5-6897-4253-9bff-9e1bc34ced6a",
@@ -27,36 +27,36 @@
     "id": "5a58df14-e2da-4f08-9b82-f723f02b5edc",
     "name": "Ahmad Fauzi",
     "phoneNumber": "+62 811-2345-6789",
-    "address": "Jl. Diponegoro No. 56, Surabaya, Indonesia"
+    "address": "Jl. Diponegoro No. 56, Surabaya, Jawa Timur, Indonesia"
   },
   {
     "id": "51e44dcb-46be-4152-8750-8f7d53e3d4eb",
     "name": "Rina Kusuma",
-    "phoneNumber": "+62 812-3456-7890",
-    "address": "Jl. Sudirman No. 78, Yogyakarta, Indonesia"
+    "phoneNumber": "+62 821-4444-5504",
+    "address": "Jl. Sudirman No. 78, Yogyakarta, DI Yogyakarta, Indonesia"
   },
   {
     "id": "a020befa-1f4e-4e2d-8c66-cb9c84a33f13",
     "name": "Dewi Lestari",
     "phoneNumber": "+62 813-9876-5432",
-    "address": "Jl. Gatot Subroto No. 90, Medan, Indonesia"
+    "address": "Jl. Gatot Subroto No. 90, Medan, Sumatera Utara, Indonesia"
   },
   {
     "id": "46fdf19a-4048-4b91-8bca-e5ad30ea6a8e",
-    "name": "Oliver Hughes",
-    "phoneNumber": "+44 7911 123456",
-    "address": "22 Baker Street, London NW1 6XE, UK"
+    "name": "Rizky Ramadhan",
+    "phoneNumber": "+62 878-5555-6605",
+    "address": "Jl. Jenderal Sudirman No. 22, Jakarta Selatan, DKI Jakarta, Indonesia"
   },
   {
     "id": "1f8be230-db86-47cd-a8c6-1324fd84df13",
-    "name": "Emma Watson",
-    "phoneNumber": "+44 7911 654321",
-    "address": "10 Downing Street, London SW1A 2AA, UK"
+    "name": "Putri Anggraini",
+    "phoneNumber": "+62 852-6666-7706",
+    "address": "Jl. Slamet Riyadi No. 15, Surakarta, Jawa Tengah, Indonesia"
   },
   {
     "id": "58e56b07-46d4-4c1a-97c2-2f706da79f51",
-    "name": "Liam Smith",
-    "phoneNumber": "+44 7911 987654",
-    "address": "15 Oxford Street, London W1D 2LT, UK"
+    "name": "Hendra Gunawan",
+    "phoneNumber": "+62 819-7777-8807",
+    "address": "Jl. Ahmad Yani No. 33, Makassar, Sulawesi Selatan, Indonesia"
   }
 ]
