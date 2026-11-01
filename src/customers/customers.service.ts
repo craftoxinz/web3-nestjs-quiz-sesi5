@@ -1,4 +1,8 @@
-import { Injectable, NotFoundException } from '@nestjs/common';
+import {
+  ConflictException,
+  Injectable,
+  NotFoundException,
+} from '@nestjs/common';
 import { Customer } from './interfaces/customer.interface.js';
 import { CreateCustomerDto } from './dto/create-customer.dto.js';
 import { UpdateCustomerDto } from './dto/update-customer.dto.js';
@@ -41,6 +45,8 @@ export class CustomersService {
   }
 
   create(createCustomerDto: CreateCustomerDto): Customer {
+    this.assertPhoneNumberAvailable(createCustomerDto.phoneNumber);
+
     const newCustomer: Customer = {
       id: crypto.randomUUID(),
       ...createCustomerDto,
@@ -53,12 +59,18 @@ export class CustomersService {
   update(id: string, updateCustomerDto: UpdateCustomerDto): Customer {
     const customer = this.findOne(id);
 
+    if (updateCustomerDto.phoneNumber) {
+      this.assertPhoneNumberAvailable(updateCustomerDto.phoneNumber, id);
+    }
+
     Object.assign(customer, updateCustomerDto, { id });
     return customer;
   }
 
   replace(id: string, putCustomerDto: PutCustomerDto): Customer {
     const customer = this.findOne(id);
+
+    this.assertPhoneNumberAvailable(putCustomerDto.phoneNumber, id);
 
     Object.assign(customer, putCustomerDto, { id });
     return customer;
@@ -71,5 +83,21 @@ export class CustomersService {
       throw new NotFoundException(`Customer with id ${id} not found`);
     }
     this.customers.splice(index, 1);
+  }
+
+  private assertPhoneNumberAvailable(
+    phoneNumber: string,
+    excludeId?: string,
+  ): void {
+    const exists = this.customers.some(
+      (customer) =>
+        customer.phoneNumber === phoneNumber && customer.id !== excludeId,
+    );
+
+    if (exists) {
+      throw new ConflictException(
+        `Customer with phone number ${phoneNumber} already exists`,
+      );
+    }
   }
 }

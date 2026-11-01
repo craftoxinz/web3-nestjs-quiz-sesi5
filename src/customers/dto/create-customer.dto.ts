@@ -8,7 +8,10 @@ export class CreateCustomerDto {
 
   @IsString()
   @IsNotEmpty()
-  @Matches(/^\+\d{1,3}[\d\s-]{6,15}$/) // format: +<country code> <number>, e.g., +1 123-456-7890
+  @Matches(/^\+\d{1,3}[\d\s-]{6,15}$/, {
+    message:
+      'Invalid phone number format, expected format: +<country code> <number>',
+  })
   phoneNumber: string;
 
   @IsString()
