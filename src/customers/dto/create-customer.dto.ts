@@ -1,4 +1,10 @@
-import { IsNotEmpty, IsString, Matches, MaxLength } from 'class-validator';
+import {
+  IsNotEmpty,
+  IsString,
+  Matches,
+  MaxLength,
+  ValidationArguments,
+} from 'class-validator';
 
 export class CreateCustomerDto {
   @IsString()
@@ -9,8 +15,9 @@ export class CreateCustomerDto {
   @IsString()
   @IsNotEmpty()
   @Matches(/^\+\d{1,3}[\d\s-]{6,15}$/, {
-    message:
-      'Invalid phone number format, expected format: +<country code> <number>',
+    message: (args: ValidationArguments) => {
+      return `${args.property} must start with a country code, e.g. +62 812-3456-7890`;
+    },
   })
   phoneNumber: string;
 
