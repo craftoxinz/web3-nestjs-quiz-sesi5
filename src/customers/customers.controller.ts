@@ -14,7 +14,7 @@ import {
 import { CustomersService } from './customers.service.js';
 import { CreateCustomerDto } from './dto/create-customer.dto.js';
 import { UpdateCustomerDto } from './dto/update-customer.dto.js';
-import { PutCustomerDto } from './dto/put-customer.dto.js';
+import { ReplaceCustomerDto } from './dto/replace-customer.dto.js';
 
 @Controller('customers')
 export class CustomersController {
@@ -46,9 +46,9 @@ export class CustomersController {
   @Put(':id')
   replace(
     @Param('id', ParseUUIDPipe) id: string,
-    @Body() putCustomerDto: PutCustomerDto,
+    @Body() replaceCustomerDto: ReplaceCustomerDto,
   ) {
-    return this.customersService.replace(id, putCustomerDto);
+    return this.customersService.replace(id, replaceCustomerDto);
   }
 
   @Delete(':id')

@@ -6,7 +6,7 @@ import {
 import { Customer } from './interfaces/customer.interface.js';
 import { CreateCustomerDto } from './dto/create-customer.dto.js';
 import { UpdateCustomerDto } from './dto/update-customer.dto.js';
-import { PutCustomerDto } from './dto/put-customer.dto.js';
+import { ReplaceCustomerDto } from './dto/replace-customer.dto.js';
 
 @Injectable()
 export class CustomersService {
@@ -29,6 +29,18 @@ export class CustomersService {
       phoneNumber: '+62 857-3333-4403',
       address: 'Jl. Raya Kuta No. 8, Badung, Bali, Indonesia',
     },
+    {
+      id: 'b95acdd5-6897-4253-9bff-9e1bc34ced6a',
+      name: 'Budi Santoso',
+      phoneNumber: '+62 812-3456-7890',
+      address: 'Jl. Asia Afrika No. 12, Bandung, Jawa Barat, Indonesia',
+    },
+    {
+      id: '5a58df14-e2da-4f08-9b82-f723f02b5edc',
+      name: 'Ahmad Fauzi',
+      phoneNumber: '+62 811-2345-6789',
+      address: 'Jl. Diponegoro No. 56, Surabaya, Jawa Timur, Indonesia',
+    },
   ];
 
   findAll(): Customer[] {
@@ -39,7 +51,7 @@ export class CustomersService {
     const customer = this.customers.find((customer) => customer.id === id);
 
     if (!customer) {
-      throw new NotFoundException(`Customer with id ${id} not found`);
+      throw new NotFoundException(`customer with id ${id} not found`);
     }
     return customer;
   }
@@ -67,12 +79,12 @@ export class CustomersService {
     return customer;
   }
 
-  replace(id: string, putCustomerDto: PutCustomerDto): Customer {
+  replace(id: string, replaceCustomerDto: ReplaceCustomerDto): Customer {
     const customer = this.findOne(id);
 
-    this.assertPhoneNumberAvailable(putCustomerDto.phoneNumber, id);
+    this.assertPhoneNumberAvailable(replaceCustomerDto.phoneNumber, id);
 
-    Object.assign(customer, putCustomerDto, { id });
+    Object.assign(customer, replaceCustomerDto, { id });
     return customer;
   }
 
@@ -80,7 +92,7 @@ export class CustomersService {
     const index = this.customers.findIndex((customer) => customer.id === id);
 
     if (index === -1) {
-      throw new NotFoundException(`Customer with id ${id} not found`);
+      throw new NotFoundException(`customer with id ${id} not found`);
     }
     this.customers.splice(index, 1);
   }
@@ -89,15 +101,22 @@ export class CustomersService {
     phoneNumber: string,
     excludeId?: string,
   ): void {
+    const target = this.normalizePhoneNumber(phoneNumber);
+
     const exists = this.customers.some(
       (customer) =>
-        customer.phoneNumber === phoneNumber && customer.id !== excludeId,
+        this.normalizePhoneNumber(customer.phoneNumber) === target &&
+        customer.id !== excludeId,
     );
 
     if (exists) {
       throw new ConflictException(
-        `Customer with phone number ${phoneNumber} already exists`,
+        `customer with phoneNumber ${phoneNumber} already exists`,
       );
     }
+  }
+
+  private normalizePhoneNumber(phoneNumber: string): string {
+    return phoneNumber.replace(/[\s-]/g, '');
   }
 }
