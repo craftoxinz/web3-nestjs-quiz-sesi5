@@ -4,69 +4,89 @@
     "name": "FTL-001",
     "sportType": "futsal",
     "pricePerHour": 150000,
-    "status": "available"
+    "status": "available",
+    "createdAt": "2026-01-05T01:00:00.000Z",
+    "updatedAt": "2026-01-05T01:00:00.000Z"
   },
   {
     "id": "d88e1da9-5500-4685-9bf5-a1afb18082b5",
     "name": "FTL-002",
     "sportType": "futsal",
     "pricePerHour": 150000,
-    "status": "available"
+    "status": "available",
+    "createdAt": "2026-01-05T01:05:00.000Z",
+    "updatedAt": "2026-01-05T01:05:00.000Z"
   },
   {
     "id": "4ec6dcc2-5b1f-4fa1-b0de-b13aca95c312",
     "name": "BDM-001",
     "sportType": "badminton",
     "pricePerHour": 60000,
-    "status": "available"
+    "status": "available",
+    "createdAt": "2026-01-05T01:10:00.000Z",
+    "updatedAt": "2026-01-05T01:10:00.000Z"
   },
   {
     "id": "7fdcae4e-bfc7-40fc-be86-acb13eb1ef65",
     "name": "BDM-002",
     "sportType": "badminton",
     "pricePerHour": 60000,
-    "status": "maintenance"
+    "status": "maintenance",
+    "createdAt": "2026-01-05T01:15:00.000Z",
+    "updatedAt": "2026-08-14T03:20:00.000Z"
   },
   {
     "id": "7fdef5d3-3d50-48d1-84b7-566e427e2948",
     "name": "BSK-001",
     "sportType": "basketball",
     "pricePerHour": 200000,
-    "status": "available"
+    "status": "available",
+    "createdAt": "2026-01-05T01:20:00.000Z",
+    "updatedAt": "2026-01-05T01:20:00.000Z"
   },
   {
     "id": "43220ac0-5f94-4f6c-98bf-7666517ca347",
     "name": "BSK-002",
     "sportType": "basketball",
     "pricePerHour": 200000,
-    "status": "available"
+    "status": "available",
+    "createdAt": "2026-01-05T01:25:00.000Z",
+    "updatedAt": "2026-01-05T01:25:00.000Z"
   },
   {
     "id": "5615cf29-19f2-43a5-bfd3-7f9a412bd443",
     "name": "TNS-001",
     "sportType": "tennis",
     "pricePerHour": 175000,
-    "status": "available"
+    "status": "available",
+    "createdAt": "2026-01-05T01:30:00.000Z",
+    "updatedAt": "2026-01-05T01:30:00.000Z"
   },
   {
     "id": "ca5f12f7-f81e-4f56-aa74-274ba2ae62ac",
     "name": "TNS-002",
     "sportType": "tennis",
     "pricePerHour": 175000,
-    "status": "maintenance"
+    "status": "maintenance",
+    "createdAt": "2026-01-05T01:35:00.000Z",
+    "updatedAt": "2026-09-02T04:45:00.000Z"
   },
   {
     "id": "dd1b3dba-a15e-4dde-9af0-aabff65a69b2",
     "name": "VLI-001",
     "sportType": "volleyball",
     "pricePerHour": 110000,
-    "status": "available"
+    "status": "available",
+    "createdAt": "2026-01-05T01:40:00.000Z",
+    "updatedAt": "2026-01-05T01:40:00.000Z"
   },
   {
     "id": "31907f38-8f95-4f26-831b-d488c2e8705d",
     "name": "VLI-002",
     "sportType": "volleyball",
     "pricePerHour": 110000,
-    "status": "available"
+    "status": "available",
+    "createdAt": "2026-01-05T01:45:00.000Z",
+    "updatedAt": "2026-01-05T01:45:00.000Z"
   }
 ]

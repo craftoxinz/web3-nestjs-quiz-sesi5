@@ -17,6 +17,8 @@ export class FieldsService {
       sportType: SportType.FUTSAL,
       pricePerHour: 150000,
       status: FieldStatus.AVAILABLE,
+      createdAt: new Date('2026-01-05T01:00:00.000Z'),
+      updatedAt: new Date('2026-01-05T01:00:00.000Z'),
     },
     {
       id: 'd88e1da9-5500-4685-9bf5-a1afb18082b5',
@@ -24,6 +26,8 @@ export class FieldsService {
       sportType: SportType.FUTSAL,
       pricePerHour: 150000,
       status: FieldStatus.AVAILABLE,
+      createdAt: new Date('2026-01-05T01:05:00.000Z'),
+      updatedAt: new Date('2026-01-05T01:05:00.000Z'),
     },
     {
       id: '4ec6dcc2-5b1f-4fa1-b0de-b13aca95c312',
@@ -31,6 +35,8 @@ export class FieldsService {
       sportType: SportType.BADMINTON,
       pricePerHour: 60000,
       status: FieldStatus.AVAILABLE,
+      createdAt: new Date('2026-01-05T01:10:00.000Z'),
+      updatedAt: new Date('2026-01-05T01:10:00.000Z'),
     },
     {
       id: '7fdcae4e-bfc7-40fc-be86-acb13eb1ef65',
@@ -38,6 +44,8 @@ export class FieldsService {
       sportType: SportType.BADMINTON,
       pricePerHour: 60000,
       status: FieldStatus.MAINTENANCE,
+      createdAt: new Date('2026-01-05T01:15:00.000Z'),
+      updatedAt: new Date('2026-08-14T03:20:00.000Z'),
     },
     {
       id: '7fdef5d3-3d50-48d1-84b7-566e427e2948',
@@ -45,6 +53,8 @@ export class FieldsService {
       sportType: SportType.BASKETBALL,
       pricePerHour: 200000,
       status: FieldStatus.AVAILABLE,
+      createdAt: new Date('2026-01-05T01:20:00.000Z'),
+      updatedAt: new Date('2026-01-05T01:20:00.000Z'),
     },
   ];
 
@@ -63,10 +73,13 @@ export class FieldsService {
 
   create(createFieldDto: CreateFieldDto): Field {
     this.assertFieldNameAvailable(createFieldDto.name);
+    const now = new Date();
 
     const newField: Field = {
       id: crypto.randomUUID(),
       ...createFieldDto,
+      createdAt: now,
+      updatedAt: now,
     };
 
     this.fields.push(newField);
@@ -80,7 +93,7 @@ export class FieldsService {
       this.assertFieldNameAvailable(updateFieldDto.name, id);
     }
 
-    Object.assign(field, updateFieldDto, { id });
+    Object.assign(field, updateFieldDto, { id, updatedAt: new Date() });
     return field;
   }
 
@@ -89,7 +102,7 @@ export class FieldsService {
 
     this.assertFieldNameAvailable(replaceFieldDto.name, id);
 
-    Object.assign(field, replaceFieldDto, { id });
+    Object.assign(field, replaceFieldDto, { id, updatedAt: new Date() });
     return field;
   }
 

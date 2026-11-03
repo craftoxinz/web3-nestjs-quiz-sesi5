@@ -18,4 +18,6 @@ export interface Field {
   sportType: SportType;
   pricePerHour: number;
   status: FieldStatus;
+  createdAt: Date;
+  updatedAt: Date;
 }

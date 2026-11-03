@@ -3,4 +3,6 @@ export interface Customer {
   name: string;
   phoneNumber: string;
   address: string;
+  createdAt: Date;
+  updatedAt: Date;
 }
