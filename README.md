@@ -21,41 +21,234 @@
   <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
   [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
 
-## Description
+# Sistem Reservasi Lapangan Olahraga
+ 
+REST API untuk reservasi lapangan olahraga (futsal, badminton, basket, tenis, voli) yang dibangun dengan [NestJS](https://nestjs.com). Pengguna dapat melihat daftar lapangan, mengecek ketersediaan jadwal, memesan slot waktu, melihat riwayat reservasi, dan membatalkan booking.
+ 
+Proyek ini dikerjakan untuk **Kuis Proyek Individu Sesi 5, Praktek Pemrograman Web 3**. Data disimpan sementara di memori (array), tanpa database, sehingga semua perubahan hilang saat server dihentikan.
+ 
+## Teknologi
+ 
+- NestJS 12 (Express), TypeScript, ES Modules
+- `class-validator` dan `class-transformer` untuk validasi request
+- Vitest dan Supertest untuk pengujian
+- Oxlint dan Prettier untuk lint dan format
+- Builder SWC
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+## Fitur
+ 
+- CRUD lapangan (`fields`) dan customer (`customers`)
+- Pembuatan booking dengan perhitungan `totalPrice` otomatis (harga per jam x durasi)
+- Deteksi jadwal bentrok pada lapangan dan tanggal yang sama
+- Pembatalan booking, dan slot yang dibatalkan otomatis tersedia kembali
+- Pengecekan slot kosong dan slot terpakai per lapangan per tanggal
+- Riwayat booking per customer
+- Timestamp `createdAt` dan `updatedAt` pada semua data
 
-## Project setup
-
+## Menjalankan Proyek
+ 
 ```bash
-$ npm install
+# instal dependensi
+npm install
+ 
+# development (watch mode)
+npm run start:dev
+ 
+# production
+npm run build
+npm run start:prod
+```
+ 
+Server berjalan di `http://localhost:3000`. Port dapat diubah lewat variabel lingkungan `PORT`.
+
+### Perintah lain
+ 
+```bash
+npm run test        # unit test
+npm run test:e2e    # e2e test
+npm run test:cov    # coverage
+npm run lint        # oxlint
+npm run format      # prettier
 ```
 
-## Compile and run the project
+## Daftar Endpoint
+ 
+### Lapangan (`/fields`)
+ 
+| Method | Endpoint | Fungsi |
+|---|---|---|
+| GET | `/fields` | Daftar semua lapangan |
+| GET | `/fields/:id` | Detail satu lapangan |
+| GET | `/fields/:fieldId/availability?date=YYYY-MM-DD` | Slot terpakai dan slot kosong pada tanggal tertentu |
+| POST | `/fields` | Tambah lapangan |
+| PATCH | `/fields/:id` | Ubah sebagian data lapangan |
+| PUT | `/fields/:id` | Ganti seluruh data lapangan |
+| DELETE | `/fields/:id` | Hapus lapangan |
 
-```bash
-# development
-$ npm run start
+### Reservasi (`/bookings`)
+ 
+| Method | Endpoint | Fungsi |
+|---|---|---|
+| GET | `/bookings` | Daftar semua booking |
+| GET | `/bookings/:id` | Detail satu booking |
+| POST | `/bookings` | Buat booking baru |
+| PATCH | `/bookings/:id/cancel` | Batalkan booking |
+| GET | `/customers/:customerId/bookings` | Riwayat booking milik satu customer |
 
-# watch mode
-$ npm run start:dev
+### Customer (`/customers`)
+ 
+| Method | Endpoint | Fungsi |
+|---|---|---|
+| GET | `/customers` | Daftar semua customer |
+| GET | `/customers/:id` | Detail satu customer |
+| POST | `/customers` | Tambah customer |
+| PATCH | `/customers/:id` | Ubah sebagian data customer |
+| PUT | `/customers/:id` | Ganti seluruh data customer |
+| DELETE | `/customers/:id` | Hapus customer |
+ 
+Semua `:id` harus berupa UUID. UUID yang tidak valid ditolak dengan `400 Bad Request`.
 
-# production mode
-$ npm run start:prod
+## Aturan Bisnis
+ 
+- Jam operasional **08:00 sampai 24:00**.
+- `endTime` harus lebih besar dari `startTime`.
+- Waktu booking harus di masa depan, dihitung menurut zona waktu `Asia/Jakarta`.
+- Booking hanya bisa dibuat pada lapangan berstatus `available`.
+- Slot yang sudah berstatus `booked` tidak bisa dipesan lagi. Booking `cancelled` dan `completed` tidak dianggap sebagai slot terpakai.
+- Booking yang berurutan tidak dianggap bentrok, misalnya 18:00-19:00 dan 19:00-21:00.
+- `totalPrice` = `pricePerHour` x durasi (jam).
+- Hanya booking berstatus `booked` yang bisa dibatalkan.
+- Client tidak boleh mengirim field di luar yang didefinisikan DTO (`whitelist` dan `forbidNonWhitelisted` aktif).
+
+
+### Status data
+ 
+| Entitas | Nilai status |
+|---|---|
+| Lapangan | `available`, `unavailable`, `maintenance` |
+| Booking | `booked`, `cancelled`, `completed` |
+ 
+Jenis olahraga: `futsal`, `badminton`, `basketball`, `tennis`, `volleyball`.
+
+## Contoh Request dan Response
+ 
+### Membuat booking
+ 
+`POST /bookings`
+ 
+```json
+{
+  "fieldId": "c4a6b7cb-b40a-41b4-a154-21c5847869e8",
+  "customerId": "8b737a45-9b0b-485d-9189-e54f4547b138",
+  "date": "2030-01-15",
+  "startTime": "21:00",
+  "endTime": "22:00"
+}
 ```
-
-## Run tests
-
-```bash
-# unit tests
-$ npm run test
-
-# e2e tests
-$ npm run test:e2e
-
-# test coverage
-$ npm run test:cov
+ 
+Response `201 Created`:
+ 
+```json
+{
+  "id": "2b0f8c52-6e7e-4b7a-9a43-1f3f6f8f0a11",
+  "fieldId": "c4a6b7cb-b40a-41b4-a154-21c5847869e8",
+  "customerId": "8b737a45-9b0b-485d-9189-e54f4547b138",
+  "date": "2030-01-15",
+  "startTime": "21:00",
+  "endTime": "22:00",
+  "status": "booked",
+  "totalPrice": 150000,
+  "createdAt": "2026-11-03T16:00:00.000Z",
+  "updatedAt": "2026-11-03T16:00:00.000Z",
+  "customerName": "Andi Pratama",
+  "fieldName": "FTL-001"
+}
 ```
+ 
+### Jadwal bentrok
+ 
+`POST /bookings` dengan `startTime: "18:00"` dan `endTime: "19:00"` pada lapangan dan tanggal yang sama dengan contoh seed.
+ 
+Response `409 Conflict`:
+ 
+```json
+{
+  "message": "the selected time slot is already booked",
+  "error": "Conflict",
+  "statusCode": 409
+}
+```
+ 
+### Cek ketersediaan
+ 
+`GET /fields/c4a6b7cb-b40a-41b4-a154-21c5847869e8/availability?date=2030-01-15`
+ 
+Response `200 OK`:
+ 
+```json
+{
+  "fieldId": "c4a6b7cb-b40a-41b4-a154-21c5847869e8",
+  "fieldName": "FTL-001",
+  "status": "available",
+  "date": "2030-01-15",
+  "bookedSlots": [
+    { "startTime": "18:00", "endTime": "19:00" },
+    { "startTime": "19:00", "endTime": "21:00" }
+  ],
+  "availableSlots": [
+    { "startTime": "08:00", "endTime": "18:00" },
+    { "startTime": "21:00", "endTime": "24:00" }
+  ]
+}
+```
+ 
+### Membatalkan booking
+ 
+`PATCH /bookings/9f992dcf-4fc0-4145-a645-889dfb958359/cancel`
+ 
+Response `200 OK`: booking dengan `"status": "cancelled"` dan `updatedAt` yang diperbarui. Setelah itu slot 18:00-19:00 muncul kembali di `availableSlots`.
+
+## Status Code
+ 
+| Kondisi | Status |
+|---|---|
+| Data berhasil diambil atau diubah | `200 OK` |
+| Booking, lapangan, atau customer berhasil dibuat | `201 Created` |
+| Data berhasil dihapus | `204 No Content` |
+| Body tidak valid, UUID salah, `date` salah, jam di luar operasional, waktu sudah lewat, atau booking yang dibatalkan tidak berstatus `booked` | `400 Bad Request` |
+| Booking, lapangan, atau customer tidak ditemukan | `404 Not Found` |
+| Jadwal bentrok, lapangan tidak tersedia, atau data duplikat (nama lapangan atau nomor telepon) | `409 Conflict` |
+ 
+## Data Awal (Seed)
+ 
+Saat server dijalankan, tersedia data contoh di memori:
+ 
+- 5 lapangan: `FTL-001`, `FTL-002`, `BDM-001`, `BDM-002` (maintenance), `BSK-001`
+- 5 customer
+- 5 booking, mencakup status `booked`, `cancelled`, dan `completed`
+Daftar lengkap data contoh ada di folder `src/dev-data`.
+
+## Struktur Proyek
+ 
+```
+src/
+├── main.ts                      # entry point, ValidationPipe global
+├── app.module.ts
+├── fields/                      # modul lapangan
+├── customers/                   # modul customer
+├── bookings/                    # modul reservasi
+│   ├── bookings.controller.ts
+│   ├── customer-bookings.controller.ts
+│   ├── field-availability.controller.ts
+│   ├── bookings.service.ts
+│   ├── dto/
+│   └── interfaces/
+└── dev-data/                    # contoh data JSON
+test/                            # e2e test
+postman_collection.json          # koleksi pengujian Postman
+```
+ 
+Route `/customers/:customerId/bookings` dan `/fields/:fieldId/availability` ditempatkan di `BookingsModule` karena datanya dimiliki `BookingsService`. Dengan begitu `FieldsModule` dan `CustomersModule` tidak perlu bergantung balik ke `BookingsModule`.
 
 ## Deployment
 
