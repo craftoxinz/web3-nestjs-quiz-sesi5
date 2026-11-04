@@ -1,0 +1,469 @@
+{
+  "info": {
+    "_postman_id": "354d8904-e32e-4651-b8e8-ec8454627cc6",
+    "name": "web3-nestjs-quiz-sesi5",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "24048131"
+  },
+  "item": [
+    {
+      "name": "Customer",
+      "item": [
+        {
+          "name": "Get All Customers",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:3000/customers",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "customers"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get a Customer",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:3000/customers/8b737a45-9b0b-485d-9189-e54f4547b138",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "customers",
+                "8b737a45-9b0b-485d-9189-e54f4547b138"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Create a Customer",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"name\": \"Hendra Gunawan\",\r\n    \"phoneNumber\": \"+62 819-7777-8807\",\r\n    \"address\": \"Jl. Ahmad Yani No. 33, Makassar, Sulawesi Selatan, Indonesia\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:3000/customers",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "customers"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Delete a Customer",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:3000/customers/d0e49e0a-9d51-4f2f-89cd-ecec1b7e07f6",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "customers",
+                "d0e49e0a-9d51-4f2f-89cd-ecec1b7e07f6"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Update a Customer",
+          "request": {
+            "method": "PATCH",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"name\": \"Dzaki Fauzan\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:3000/customers/8b737a45-9b0b-485d-9189-e54f4547b138",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "customers",
+                "8b737a45-9b0b-485d-9189-e54f4547b138"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Replace a Customer",
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"name\": \"Budi Doremi\",\r\n    \"phoneNumber\": \"+62 812-3456-7890\",\r\n    \"address\": \"Jl. Asia Afrika No. 12, Bandung, Jawa Barat, Indonesia\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:3000/customers/b95acdd5-6897-4253-9bff-9e1bc34ced6a",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "customers",
+                "b95acdd5-6897-4253-9bff-9e1bc34ced6a"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Field",
+      "item": [
+        {
+          "name": "Get All Fields",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:3000/fields",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "fields"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get a Field",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:3000/fields/d88e1da9-5500-4685-9bf5-a1afb18082b5",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "fields",
+                "d88e1da9-5500-4685-9bf5-a1afb18082b5"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Delete a Field",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:3000/fields/4ec6dcc2-5b1f-4fa1-b0de-b13aca95c312",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "fields",
+                "4ec6dcc2-5b1f-4fa1-b0de-b13aca95c312"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Create a Field",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"name\": \"VLI-002\",\r\n    \"sportType\": \"volleyball\",\r\n    \"pricePerHour\": 110000,\r\n    \"status\": \"available\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:3000/fields",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "fields"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Update a Field",
+          "request": {
+            "method": "PATCH",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"pricePerHour\": 120000,\r\n    \"status\": \"available\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:3000/fields/c4a6b7cb-b40a-41b4-a154-21c5847869e8",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "fields",
+                "c4a6b7cb-b40a-41b4-a154-21c5847869e8"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Replace a Field",
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"name\": \"FTL-001\",\r\n    \"sportType\": \"futsal\",\r\n    \"pricePerHour\": 120000,\r\n    \"status\": \"available\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:3000/fields/c4a6b7cb-b40a-41b4-a154-21c5847869e8",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "fields",
+                "c4a6b7cb-b40a-41b4-a154-21c5847869e8"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get a Field Availability",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:3000/fields/c4a6b7cb-b40a-41b4-a154-21c5847869e8/availability?date=2030-01-15",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "fields",
+                "c4a6b7cb-b40a-41b4-a154-21c5847869e8",
+                "availability"
+              ],
+              "query": [
+                {
+                  "key": "date",
+                  "value": "2030-01-15"
+                }
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Booking",
+      "item": [
+        {
+          "name": "Get All Bookings",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:3000/bookings",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "bookings"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get a Booking",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:3000/bookings/9f992dcf-4fc0-4145-a645-889dfb958359",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "bookings",
+                "9f992dcf-4fc0-4145-a645-889dfb958359"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Create a Booking",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"fieldId\": \"c4a6b7cb-b40a-41b4-a154-21c5847869e8\",\r\n    \"customerId\": \"8b737a45-9b0b-485d-9189-e54f4547b138\",\r\n    \"date\": \"2030-01-15\",\r\n    \"startTime\": \"10:00\",\r\n    \"endTime\": \"12:00\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:3000/bookings",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "bookings"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Cancel a Booking",
+          "request": {
+            "method": "PATCH",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"fieldId\": \"c4a6b7cb-b40a-41b4-a154-21c5847869e8\",\r\n    \"customerId\": \"8b737a45-9b0b-485d-9189-e54f4547b138\",\r\n    \"date\": \"2030-01-15\",\r\n    \"startTime\": \"10:00\",\r\n    \"endTime\": \"12:00\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:3000/bookings/024aaffd-b935-4d3c-9d6d-b935b44ced9d/cancel",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "bookings",
+                "024aaffd-b935-4d3c-9d6d-b935b44ced9d",
+                "cancel"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get All Bookings by CustomerId",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"fieldId\": \"c4a6b7cb-b40a-41b4-a154-21c5847869e8\",\r\n    \"customerId\": \"8b737a45-9b0b-485d-9189-e54f4547b138\",\r\n    \"date\": \"2030-01-15\",\r\n    \"startTime\": \"10:00\",\r\n    \"endTime\": \"12:00\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:3000/customers/5a58df14-e2da-4f08-9b82-f723f02b5edc/bookings",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "customers",
+                "5a58df14-e2da-4f08-9b82-f723f02b5edc",
+                "bookings"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    }
+  ]
+}
